@@ -1,0 +1,39 @@
+name: Face Recognition CI
+
+on:
+  push:
+    paths:
+      - "Face_Recognition/**"
+  pull_request:
+    paths:
+      - "Face_Recognition/**"
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      
+      - name: Install dependencies
+        run: |
+          pip install -r Face_Recognition/requirements.txt
+
+      - name: Run unit tests
+        run: |
+          pytest Face_Recognition/tests
+      
+      - name: Run unit tests
+        run: |
+          pytest Face_Recognition/tests
+
+      - name: Smoke test (train)
+        run: |
+          python -m app.train
+        working-directory: Face_Recognition

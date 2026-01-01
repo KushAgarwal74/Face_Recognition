@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Virtual environments
+.venv/
+
+# OS
+.DS_Store
+
+# Data (do not push large or volatile data)
+data/processed/
+data/raw_original/

@@ -1,0 +1,41 @@
+data:
+  raw_dir: data/raw
+  processed_dir: data/processed
+
+preprocessing:
+  image_size: [100, 100]
+
+pca:
+  enabled: true
+  k: 15               # Must satisfy: k ≤ (N_train − num_classes)
+
+# 🔥 Constraint 1: PCA dimension upper bound
+  # After PCA, the maximum useful dimension is: K_PCA ≤ N_TRAIN - C
+# 🔥 Why?
+  # Rank of within-class scatter ≤ N_TRAIN - C
+  # Otherwise LDA becomes singular again 
+  # CURRETNLY ITS ≤ 22 - 5 ≤ 17 
+
+# 🔥 Constraint 2: LDA Output dimension can produce at mose C - 1
+  # 5 - 1 = 4 in this case
+
+# 10,000D (pixels)
+#    ↓ PCA (k ≤ 17)
+# 15D  ← your choice
+#    ↓ LDA
+# 4D   ← forced by math
+
+lda:
+  enabled: true
+  n_components: auto # Will be resolved as min(config, C − 1)
+  selection: 
+    enabled: false
+
+split:
+  test_ratio: 0.3
+  val_ratio: 0.2
+  seed: 42
+
+classifier:
+  type: nearest_neighbor
+  distance: cosine   # euclidean | cosine

@@ -1,0 +1,14 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: face-recognition-train
+spec:
+  backoffLimit: 0
+  template:
+    spec:
+      containers:
+      - name: trainer
+        image: face-recognition        # Matches your local image name
+        imagePullPolicy: Never         # Prevents Kubernetes from trying Docker Hub
+        command: ["python", "-m", "app.train"]
+      restartPolicy: Never
