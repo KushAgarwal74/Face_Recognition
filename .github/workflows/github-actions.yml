@@ -26,7 +26,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest tests/test_pca.py
+          tests/test_pca.py
 
       - name: Smoke test (training pipeline)
         run: |
