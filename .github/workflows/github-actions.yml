@@ -2,11 +2,9 @@ name: Face Recognition CI
 
 on:
   push:
-    paths:
-      - "Face_Recognition/**"
+    branches: [ "main" ]
   pull_request:
-    paths:
-      - "Face_Recognition/**"
+    branches: [ "main" ]
 
 jobs:
   test:
@@ -23,17 +21,12 @@ jobs:
       
       - name: Install dependencies
         run: |
-          pip install -r Face_Recognition/requirements.txt
+          pip install -r requirements.txt
 
       - name: Run unit tests
         run: |
-          pytest Face_Recognition/tests
+          pytest tests
       
-      - name: Run unit tests
-        run: |
-          pytest Face_Recognition/tests
-
       - name: Smoke test (train)
         run: |
           python -m app.train
-        working-directory: Face_Recognition
