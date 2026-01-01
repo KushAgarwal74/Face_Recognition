@@ -1,7 +1,7 @@
 import numpy as np
 
-from core.pca import fit_pca, project, reconstruct
-from core.lda import fit_lda
+from Face_Recognition.core.pca import fit_pca, project, reconstruct
+from Face_Recognition.core.lda import fit_lda
 
 
 def test_fit_pca_shapes():
