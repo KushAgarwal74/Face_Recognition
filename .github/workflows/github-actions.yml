@@ -26,7 +26,7 @@ jobs:
 
       - name: Run unit tests
         run: |
-          pytest Face_Recognition/tests
+          pytest tests/test_pca.py
 
       - name: Smoke test (training pipeline)
         run: |
