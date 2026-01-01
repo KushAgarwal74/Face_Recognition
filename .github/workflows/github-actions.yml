@@ -26,9 +26,8 @@ jobs:
 
       - name: Run unit tests
         run: |
-          tests/test_pca.py
+          pytest tests
 
       - name: Smoke test (training pipeline)
         run: |
           python -m app.train
-        working-directory: Face_Recognition
