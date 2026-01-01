@@ -1,7 +1,7 @@
 import numpy as np
 
-from Face_Recognition.core.pca import fit_pca, project, reconstruct
-from Face_Recognition.core.lda import fit_lda
+from core.pca import fit_pca, project, reconstruct
+from core.lda import fit_lda
 
 
 def test_fit_pca_shapes():
@@ -14,7 +14,7 @@ def test_fit_pca_shapes():
     mean_face, eigenfaces, eigenfaces_k = fit_pca(X, k)
 
     assert mean_face.shape == (D,)
-    assert eigenfaces.shape == (D, D)
+    assert eigenfaces.shape == (D, min(N, D))
     assert eigenfaces_k.shape == (D, k)
 
 
