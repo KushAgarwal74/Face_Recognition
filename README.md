@@ -71,3 +71,14 @@ kubectl logs job/face-recognition-train
 📌 Notes
 Dataset is intentionally small (36 images) for reproducibility.
 Pipeline is extensible to larger datasets and CNN-based models.
+
+
+## 🛠 Makefile Commands
+
+```bash
+make venv        # Create virtual environment
+make install     # Install dependencies
+make train       # Run training
+make docker      # Build Docker image
+make clean       # Remove artifacts
+
